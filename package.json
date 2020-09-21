@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm-run-all --silent --parallel dev:*",
     "dev:client": "webpack-dev-server",
-    "dev:server": "nodemon server/start.js",
+    "dev:server": "nodemon public/main.js",
     "build": "webpack --mode=production"
   },
   "repository": {
@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "axios": "0.20.0",
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "vue": "2.6.12"
   }
 }

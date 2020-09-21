@@ -5,7 +5,10 @@ const publicPath = path.join(__dirname, 'public/');
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    },
   },
   entry: clientPath,
   output: {
