@@ -1,0 +1,35 @@
+{
+  "name": "laughing-contest",
+  "version": "1.0.0",
+  "description": "Simple Vue site",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YunCYang/laughing-contest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YunCYang/laughing-contest/issues"
+  },
+  "homepage": "https://github.com/YunCYang/laughing-contest#readme",
+  "nodemonConfig": {
+    "watch": [
+      "public/"
+    ],
+    "ignore": [
+      "public/"
+    ]
+  },
+  "devDependencies": {
+    "babel-loader": "8.1.0",
+    "npm-run-all": "4.1.5",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.10.3"
+  }
+}
