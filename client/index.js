@@ -10,7 +10,7 @@ const app = new Vue({
   },
   mounted () {
     axios
-      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .get('https://jsonplaceholder.typicode.com/users')
       .then(response => (this.info = response))
   }
 });
