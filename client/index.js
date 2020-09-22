@@ -5,12 +5,24 @@ const app = new Vue({
   el: '#app',
   data () {
     return {
-      info: null
+      player: null,
+      title: 'Laughing Contest',
+      pic1: null,
+      pic2: null
     }
   },
   mounted () {
+    const requestOne = axios.get('https://jsonplaceholder.typicode.com/users');
+    const requestTwo = axios.get('https://api.thecatapi.com/v1/images/search');
+    const requestThree = axios.get('https://api.thecatapi.com/v1/images/search');
     axios
-      .get('https://jsonplaceholder.typicode.com/users')
-      .then(response => (this.info = response))
+      .all([requestOne, requestTwo, requestThree])
+      .then(axios.spread(
+        (...responses) => {
+          this.player = responses[0],
+          this.pic1 = responses[1],
+          this.pic2 = responses[2]
+        }
+      ));
   }
 });
