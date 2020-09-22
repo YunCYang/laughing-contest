@@ -3,9 +3,6 @@
 <head>
 	<title>Laughing Contest</title>
 	<link rel="stylesheet" type="text/css" href="index.css">
-	<!--
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-	-->
 </head>
 <body>
 	<div id="app">
@@ -15,11 +12,27 @@
   		<div class="main">
   			<div class="col left player">
   				<img v-if="pic1" v-bind:src="pic1.data[0].url">
-  				<span v-if="player">{{ player.data[0].name }}</span>
+  				<span v-if="player">{{ player.data[playerNum[0]].name }}</span>
+  				<span v-if="player">{{ hp1 }}</span>
+  				<span v-if="player">{{ dps1 }}</span>
   			</div>
-  			<div class="col mid"></div>
+  			<div class="col mid">
+  				<div class="result">
+  					<img v-if="winner === 1" v-bind:src="pic1.data[0].url">
+  					<img v-if="winner === 2" v-bind:src="pic2.data[0].url">
+  					<span v-if="winner === 1">{{ player.data[playerNum[0]].name }}</span>
+  					<span v-if="winner === 2">{{ player.data[playerNum[1]].name }}</span>
+  				</div>
+  				<buttons
+  					v-on:compete="compete"
+  					v-on:randomize="randomizePlayer"
+  				></buttons>
+  			</div>
   			<div class="col right player">
   				<img v-if="pic2" v-bind:src="pic2.data[0].url">
+  				<span v-if="player">{{ player.data[playerNum[1]].name }}</span>
+  				<span v-if="player">{{ hp2 }}</span>
+  				<span v-if="player">{{ dps2 }}</span>
   			</div>
   		</div>
 	</div>
