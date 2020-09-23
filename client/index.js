@@ -25,7 +25,11 @@ const app = new Vue({
       hp2: null,
       dps1: null,
       dps2: null,
-      winner: null
+      winner: null,
+      player1Name: null,
+      player2Name: null,
+      hpError: false,
+      dpsError: false
     }
   },
   methods: {
@@ -43,6 +47,11 @@ const app = new Vue({
             this.hp2 = randomPlayerStat(50, 200) * -1;
             this.dps1 = randomPlayerStat(10, 30);
             this.dps2 = randomPlayerStat(10, 30);
+            this.winner = null;
+            this.player1Name = this.player.data[this.playerNum[0]].name;
+            this.player2Name = this.player.data[this.playerNum[1]].name;
+            this.hpError = false;
+            this.dpsError = false;
           }
         ));
     },
@@ -59,6 +68,19 @@ const app = new Vue({
         }
       };
 
+      if ((this.hp1 > 0 || this.hp2 > 0) || (this.dps1 <= 0 || this.dps2 <= 0)) {
+        if (this.hp1 > 0 || this.hp2 > 0) {
+          this.hpError = true;
+          return;
+        } 
+        if (this.dps1 <= 0 || this.dps2 <= 0) {
+          this.dpsError = true;
+          return;
+        }
+      } else {
+        this.hpError = false;
+        this.dpsError = false;
+      }
       const laugh = setInterval(cheerUp, 1000);
 
       const findWinner = () => {
@@ -90,6 +112,10 @@ const app = new Vue({
           this.dps1 = randomPlayerStat(10, 30);
           this.dps2 = randomPlayerStat(10, 30);
           this.winner = null;
+          this.player1Name = this.player.data[this.playerNum[0]].name;
+          this.player2Name = this.player.data[this.playerNum[1]].name;
+          this.hpError = false;
+          this.dpsError = false;
         }
       ));
   }

@@ -12,16 +12,19 @@
   		<div class="main">
   			<div class="col left player">
   				<img v-if="pic1" v-bind:src="pic1.data[0].url">
-  				<span v-if="player">{{ player.data[playerNum[0]].name }}</span>
-  				<span v-if="player">{{ hp1 }}</span>
-  				<span v-if="player">{{ dps1 }}</span>
+  				<input type="text" v-if="player" v-bind:value="player.data[playerNum[0]].name"
+  				v-model="player1Name">
+  				<input type="number" v-if="player" v-bind:value="hp1" v-model.number="hp1">
+  				<input type="number" v-if="player" v-bind:value="dps1" v-model.number="dps1">
   			</div>
   			<div class="col mid">
   				<div class="result">
   					<img v-if="winner === 1" v-bind:src="pic1.data[0].url">
   					<img v-if="winner === 2" v-bind:src="pic2.data[0].url">
-  					<span v-if="winner === 1">{{ player.data[playerNum[0]].name }}</span>
-  					<span v-if="winner === 2">{{ player.data[playerNum[1]].name }}</span>
+  					<span v-if="winner === 1">{{ player1Name }}</span>
+  					<span v-if="winner === 2">{{ player2Name }}</span>
+  					<p v-if="hpError">HP should be less or equal to zero!</p>
+  					<p v-if="dpsError">DPS should be greater than zero!</p>
   				</div>
   				<buttons
   					v-on:compete="compete"
@@ -30,9 +33,10 @@
   			</div>
   			<div class="col right player">
   				<img v-if="pic2" v-bind:src="pic2.data[0].url">
-  				<span v-if="player">{{ player.data[playerNum[1]].name }}</span>
-  				<span v-if="player">{{ hp2 }}</span>
-  				<span v-if="player">{{ dps2 }}</span>
+  				<input type="text" v-if="player" v-bind:value="player.data[playerNum[1]].name"
+  				v-model="player2Name">
+  				<input type="number" v-if="player" v-bind:value="hp2" v-model.number="hp2">
+  				<input type="number" v-if="player" v-bind:value="dps2" v-model.number="dps2">
   			</div>
   		</div>
 	</div>
