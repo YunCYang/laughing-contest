@@ -71,12 +71,15 @@ const app = new Vue({
       if ((this.hp1 > 0 || this.hp2 > 0) || (this.dps1 <= 0 || this.dps2 <= 0)) {
         if (this.hp1 > 0 || this.hp2 > 0) {
           this.hpError = true;
-          return;
-        } 
+        }  else {
+          this.hpError = false;
+        }
         if (this.dps1 <= 0 || this.dps2 <= 0) {
           this.dpsError = true;
-          return;
+        } else {
+          this.dpsError = false;
         }
+        return;
       } else {
         this.hpError = false;
         this.dpsError = false;

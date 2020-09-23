@@ -6,23 +6,44 @@
 </head>
 <body>
 	<div id="app">
+		<div v-if="winner" class="confetti"></div>
+  		<div v-if="winner" class="confetti"></div>
+  		<div v-if="winner" class="confetti"></div>
+  		<div v-if="winner" class="confetti"></div>
+  		<div v-if="winner" class="confetti"></div>
+  		<div v-if="winner" class="confetti"></div>
+  		<div v-if="winner" class="confetti"></div>
+  		<div v-if="winner" class="confetti"></div>
+  		<div v-if="winner" class="confetti"></div>
+  		<div v-if="winner" class="confetti"></div>
   		<div class="title">
   			<h1>{{ title }}</h1>
   		</div>
   		<div class="main">
-  			<div class="col left player">
+  			<div class="col">
   				<img v-if="pic1" v-bind:src="pic1.data[0].url">
-  				<input type="text" v-if="player" v-bind:value="player.data[playerNum[0]].name"
-  				v-model="player1Name">
-  				<input type="number" v-if="player" v-bind:value="hp1" v-model.number="hp1">
-  				<input type="number" v-if="player" v-bind:value="dps1" v-model.number="dps1">
+  				<div class="player">
+  					<div class="left">
+				      <span>Name</span>
+				      <span>HP</span>
+				      <span>DPS</span>
+				    </div>
+	  				<div class="right">
+	  					<input type="text" v-if="player" v-bind:value="player.data[playerNum[0]].name"
+		  				v-model="player1Name">
+		  				<input type="number" v-if="player" v-bind:value="hp1" v-model.number="hp1">
+		  				<input type="number" v-if="player" v-bind:value="dps1" v-model.number="dps1">
+	  				</div>
+  				</div>
   			</div>
-  			<div class="col mid">
+  			<div class="col">
   				<div class="result">
+  					<h2 v-if="winner">Winner</h2>
   					<img v-if="winner === 1" v-bind:src="pic1.data[0].url">
   					<img v-if="winner === 2" v-bind:src="pic2.data[0].url">
   					<span v-if="winner === 1">{{ player1Name }}</span>
   					<span v-if="winner === 2">{{ player2Name }}</span>
+  					<span v-if="winner === 3">It's a tie!</span>
   					<p v-if="hpError">HP should be less or equal to zero!</p>
   					<p v-if="dpsError">DPS should be greater than zero!</p>
   				</div>
@@ -31,12 +52,21 @@
   					v-on:randomize="randomizePlayer"
   				></buttons>
   			</div>
-  			<div class="col right player">
+  			<div class="col">
   				<img v-if="pic2" v-bind:src="pic2.data[0].url">
-  				<input type="text" v-if="player" v-bind:value="player.data[playerNum[1]].name"
-  				v-model="player2Name">
-  				<input type="number" v-if="player" v-bind:value="hp2" v-model.number="hp2">
-  				<input type="number" v-if="player" v-bind:value="dps2" v-model.number="dps2">
+  				<div class="player">
+  					<div class="left">
+				      <span>Name</span>
+				      <span>HP</span>
+				      <span>DPS</span>
+				    </div>
+	  				<div class="right">
+	  					<input type="text" v-if="player" v-bind:value="player.data[playerNum[1]].name"
+		  				v-model="player2Name">
+		  				<input type="number" v-if="player" v-bind:value="hp2" v-model.number="hp2">
+		  				<input type="number" v-if="player" v-bind:value="dps2" v-model.number="dps2">
+	  				</div>
+  				</div>
   			</div>
   		</div>
 	</div>
